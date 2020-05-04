@@ -28,7 +28,11 @@
 @if (Auth::guard('admin')->check())
     <p class="text-success">
         You are Loged In as a <strong>Admin</strong>
-        
+            <br>
+            <a href="{{ route('product.create') }}">Create New Product</a>
+            <br>
+            <a href="{{ route('admin.index') }}">View Existing Products</a>
+    </p>
     </p>
     @else
     <p class="text-danger">
@@ -36,6 +40,7 @@
         
     </p>
 @endif
+
                 </div>
             </div>
         </div>
