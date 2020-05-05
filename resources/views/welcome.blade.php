@@ -76,6 +76,7 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+                     <a href="{{ route('search') }}">Search</a>
                 </div>
             @endif
                 <div class="container">

@@ -67,4 +67,27 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 
 
 });
+	Route::group(['prefix'=>'user','middleware'=>'auth:web'], function(){
+
+
+		Route::get('index',[
+		'uses'=> 'UserController@index',
+		'as'=>'user.index'
+		]);
+		Route::any('search',[
+		'uses'=> 'ProductsController@search',
+		'as'=>'user.search'
+		]);
+	
+
+});
+	Route::any('search',[
+		'uses'=> 'ProductsController@search',
+		'as'=>'search'
+		]);
+	
+	Route::get('/products',[
+		'uses'=> 'ProductsController@searchPage',
+		'as'=>'products'
+		]);
 	

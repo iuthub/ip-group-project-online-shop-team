@@ -72,6 +72,20 @@ class ProductsController extends Controller
            return redirect()->route('admin.index')->with('info', 'Deleted');
 
    		}
+         public function search(Request $request){
+            $q = $request->input('q');
+            if($q!=""){
+            $products= Product::where('name','LIKE','%'.$q.'%')->get();
+            if(count($products)>0)
+             return view('product.search')->withDetails($products)->withQuery($q); 
+            }  
+             return view ('product.search')->withMessage('No Details found. Try to search again !');
+             
+         }
+         public function searchPage(){
+           
+            return view('product.search');
+         }
    		
 	 
 }
