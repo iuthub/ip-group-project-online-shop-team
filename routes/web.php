@@ -78,10 +78,22 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=> 'ProductsController@search',
 		'as'=>'user.search'
 		]);
+		Route::any('/product/{id}',[
+		'uses'=> 'ProductsController@addToCart',
+		'as'=>'user.addToCart'
+		]);
+		Route::get('/cart',[
+		'uses'=> 'ProductsController@cart',
+		'as'=>'user.cart'
+		]);
+		Route::get('/checkout',[
+		'uses'=> 'ProductsController@checkout',
+		'as'=>'user.checkout'
+		]);
 	
 
 });
-	Route::any('search',[
+	Route::any('/search',[
 		'uses'=> 'ProductsController@search',
 		'as'=>'search'
 		]);
@@ -89,5 +101,10 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 	Route::get('/products',[
 		'uses'=> 'ProductsController@searchPage',
 		'as'=>'products'
+		]);
+		
+	Route::get('/products/{id}',[
+		'uses'=> 'ProductsController@single',
+		'as'=>'single.product'
 		]);
 	

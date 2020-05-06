@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Image;
 class ProductsController extends Controller
 {
@@ -47,8 +49,8 @@ class ProductsController extends Controller
 
 	 } 
 	public function edited(Request $request){
-		 $product = Product::find($request->input('id'));
-		 $product->name = $request->input('name');
+		    $product = Product::find($request->input('id'));
+		    $product->name = $request->input('name');
    		 $product->price= $request->input('price');
    		 if ($request->hasFile('image')){
    		 $file=$request->file('image');
@@ -74,6 +76,7 @@ class ProductsController extends Controller
    		}
          public function search(Request $request){
             $q = $request->input('q');
+          
             if($q!=""){
             $products= Product::where('name','LIKE','%'.$q.'%')->get();
             if(count($products)>0)
@@ -86,6 +89,27 @@ class ProductsController extends Controller
            
             return view('product.search');
          }
-   		
-	 
-}
+       
+         public function single($id){
+            
+            $product=Product::find($id);
+            return view('product.single',['product'=>$product]);
+         }
+   		public function addToCart($id){
+            $user = Auth::user();
+            $product=Product::find($id);
+            $user->products()->attach($product);
+            return view('product.sucsses')->with('info','added Sucssesfuly');
+         } 
+         public function cart(){
+   
+            $user=Auth::user();
+            return view('user.cart',['user'=>$user]);
+         }
+             
+              public function checkout(){
+   
+          
+                  return view('user.checkout');
+         }
+        }
