@@ -21,6 +21,7 @@
             <tr>
                 <th>Name</th>
                 <th>Price</th>
+                <th>      </th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <tr>
                 <td>{{$product->name}}</td>
                 <td>{{$product->price}}</td>
+                <td><a href="{{ route('single.product',['id'=>$product->id]) }}">View</a></td>
             </tr>
             @endforeach
         </tbody>

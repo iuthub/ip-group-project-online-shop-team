@@ -9,6 +9,10 @@ class Product extends Model
     
 	protected $fillable=['name','description','price','image'];
 
+	public function users(){
+    	return $this->belongsToMany('App\User')->withTimestamps();//
+     
+     	 }
 
 
     //
