@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -111,8 +112,8 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
-        ]
-        'admins' => [,
+        ],
+        'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 30,
@@ -120,7 +121,8 @@ return [
         ],
     ],
 
-    /*
+
+/*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
     |--------------------------------------------------------------------------
@@ -133,4 +135,4 @@ return [
 
     'password_timeout' => 10800,
 
-];
+]];

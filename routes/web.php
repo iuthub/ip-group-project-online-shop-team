@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('layouts.landing');
 });
 
+Route::get('contact-us', 'ContactController@getContact');
+Route::post('contact-us', 'ContactController@saveContact');
 
 Auth::routes();
 
