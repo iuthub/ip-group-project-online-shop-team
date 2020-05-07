@@ -64,6 +64,14 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=>'ProductsController@delete',
 		'as'=>'product.delete'
 		]);
+		Route::get('/orders', [
+		'uses'=>'ProductsController@getOrders',
+		'as'=>'admin.orders'
+		]);
+		Route::any('/orders/{id}', [
+		'uses'=>'ProductsController@orderDelivered',
+		'as'=>'admin.orderDelivered'
+		]);
 
 
 });
@@ -90,6 +98,28 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=> 'ProductsController@checkout',
 		'as'=>'user.checkout'
 		]);
+		Route::get('/add-to-cart/{id}',[
+		'uses'=> 'ProductsController@getAddToCart',
+		'as'=>'product.addToCart'
+		]);
+		Route::get('/shopping-cart/',[
+		'uses'=> 'ProductsController@getCart',
+		'as'=>'product.shoppingCart'
+		]);
+		Route::get('/checkout',[
+		'uses'=> 'ProductsController@getCheckout',
+		'as'=>'checkout'
+		]);
+		Route::post('/checkout',[
+		'uses'=> 'ProductsController@postCheckout',
+		'as'=>'postcheckout'
+		]);
+		Route::get('/profile',[
+		'uses'=> 'ProductsController@getProfile',
+		'as'=>'user.profile'
+		]);
+	
+	
 	
 
 });

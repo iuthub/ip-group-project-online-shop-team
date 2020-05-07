@@ -7,6 +7,9 @@ use App\Product;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use Session;
+use App\Cart;
+use App\Order;
 class ProductsController extends Controller
 {
    public function index(){
@@ -95,6 +98,17 @@ class ProductsController extends Controller
             $product=Product::find($id);
             return view('product.single',['product'=>$product]);
          }
+         public function getAddToCart(Request $request,$id){
+            
+            $product=Product::find($id);
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($oldCart);
+            $cart->add($product, $product->id);
+            $request ->session()->put('cart', $cart);
+            
+            return redirect()->route('user.search');
+           }
+
    		public function addToCart($id){
             $user = Auth::user();
             $product=Product::find($id);
@@ -112,4 +126,66 @@ class ProductsController extends Controller
           
                   return view('user.checkout');
          }
-        }
+         public function getCart(){
+            if(!Session::has('cart')){
+               return view('product.shoping-cart',['products'=>null]);
+            }
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            return view('product.shoping-cart', ['products'=>$cart->items, 'totalPrice'=>$cart->totalPrice]);
+         }
+         public function getCheckout(){
+             if(!Session::has('cart')){
+               return view('product.shoping-cart');
+            }
+             $oldCart = Session::get('cart');
+             $cart = new Cart($oldCart);
+             $total=$cart->totalPrice;
+             return view('product.checkout',['total'=>$total]);
+         }
+         public function postCheckout(Request $request){
+            $user = Auth::user();
+            if(!Session::has('cart')){
+               return view('product.shoping-cart');
+            }
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $order = new Order;
+            $order->cart =serialize($cart);
+            $order->address =  $request->input('address');
+            $order->name =  $request->input('name');
+            $user->orders()->save($order);
+            Session::forget('cart');
+            return view('product.shoping-cart');
+         }
+       
+            public function getProfile(){
+               $orders= Auth::user()->orders;
+               $orders->transform(function($order, $key){
+                  $order->cart = unserialize($order->cart);
+                  return $order;
+               });
+               return view('user.profile',['orders' => $orders]);
+            }
+            public function getOrders(){
+               $users = User::all();
+              
+               foreach ($users as $user) {
+                $orders= $user->orders; 
+                  $orders->transform(function($order, $key){
+                  $order->cart = unserialize($order->cart);
+                  return $order;
+               });
+               }
+       
+               
+               return view('admin.orders',['users'=>$users, 'orders'=>$orders]);
+ }
+           public function orderDelivered($id){
+            $order=Order::find($id);
+            $order->delete();
+            return redirect()->route('admin.orders')->with('Delivered','The order closed');
+ }
+ 
+
+}

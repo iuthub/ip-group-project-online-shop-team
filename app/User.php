@@ -40,6 +40,8 @@ class User extends Authenticatable
  public function products(){
         return $this->belongsToMany('App\Product')->withTimestamps();//
 }
-
+ public function orders(){
+        return $this->hasMany('App\Order');
+}
 
 }
