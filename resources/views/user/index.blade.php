@@ -1,37 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('user.search') }}" method="POST" role="search">
-    {{ csrf_field() }}
-    <div class="input-group">
-        <input type="text" class="form-control" name="q"
-            placeholder="Search users"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                Search
-            </button>
-        </span>
-    </div>
-</form>
 <div class="container">
-    @if(isset($details))
-        <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-    <h2>Sample Product details</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($details as $product)
-            <tr>
-                <td>{{$product->name}}</td>
-                <td>{{$product->price}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    @endif
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                  @if (Auth::guard('web')->check())
+    <p class="text-success">
+        You are Loged In as a <strong>User</strong>
+        
+    </p>
+    @else
+    <p class="text-danger">
+        You are Loged out as a <strong>User</strong>
+        
+    </p>
+    {{-- expr --}}
+@endif
+@if (Auth::guard('admin')->check())
+    <p class="text-success">
+        You are Loged In as a <strong>Admin</strong>
+        
+    </p>
+    @else
+    <p class="text-danger">
+        You are Loged out as a <strong>Admin</strong>
+        
+    </p>
+@endif
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

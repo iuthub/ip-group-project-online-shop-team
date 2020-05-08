@@ -45,8 +45,8 @@ return [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ],
-         'admin' => [
+       
+         'admin' => [ 
             'driver' => 'session',
             'provider' => 'admins',
         ],
@@ -55,6 +55,7 @@ return [
             'provider' => 'admins',
             'hash' => false,
     ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -110,8 +111,8 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
-        ],
-        'admins' => [
+        ]
+        'admins' => [,
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 30,

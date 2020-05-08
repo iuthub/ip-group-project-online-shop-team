@@ -23,18 +23,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-	Route::get('admin/login', [
+Route::get('admin/login', [
 		'uses'=>'Auth\AdminLoginController@showLoginForm',
 		'as'=>'admin.login'
 	]);
-	Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-	
-	Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 	
 
 	Route::group(['prefix'=>'admin','middleware'=>'auth:admin'], function(){
-
-
+		
 		Route::get('product/create',[
 		'uses'=> 'ProductsController@create',
 		'as'=>'product.create'
@@ -64,6 +62,14 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=>'ProductsController@delete',
 		'as'=>'product.delete'
 		]);
+		Route::get('/orders', [
+		'uses'=>'ProductsController@getOrders',
+		'as'=>'admin.orders'
+		]);
+		Route::any('/orders/{id}', [
+		'uses'=>'ProductsController@orderDelivered',
+		'as'=>'admin.orderDelivered'
+		]);
 
 
 });
@@ -78,10 +84,44 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=> 'ProductsController@search',
 		'as'=>'user.search'
 		]);
+		Route::get('/add-to-cart/{id}',[
+		'uses'=> 'ProductsController@getAddToCart',
+		'as'=>'product.addToCart'
+		]);
+		Route::get('/shopping-cart/',[
+		'uses'=> 'ProductsController@getCart',
+		'as'=>'product.shoppingCart'
+		]);
+		Route::get('/checkout',[
+		'uses'=> 'ProductsController@getCheckout',
+		'as'=>'checkout'
+		]);
+		Route::post('/checkout',[
+		'uses'=> 'ProductsController@postCheckout',
+		'as'=>'postcheckout'
+		]);
+		Route::get('/profile',[
+		'uses'=> 'ProductsController@getProfile',
+		'as'=>'user.profile'
+		]);
+		Route::get('/add-to-cart/reduce/{id}',[
+		'uses'=> 'ProductsController@reduceByOne',
+		'as'=>'product.reduceByOne'
+		]);
+		Route::get('/add-to-cart/increment/{id}',[
+		'uses'=> 'ProductsController@incrementByOne',
+		'as'=>'product.incrementByOne'
+		]);
+		Route::get('/add-to-cart/remove/{id}',[
+		'uses'=> 'ProductsController@removeItem',
+		'as'=>'product.removeItem'
+		]);
+	
+	
 	
 
 });
-	Route::any('search',[
+	Route::any('/search',[
 		'uses'=> 'ProductsController@search',
 		'as'=>'search'
 		]);
@@ -90,4 +130,14 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 		'uses'=> 'ProductsController@searchPage',
 		'as'=>'products'
 		]);
+		
+	Route::get('/products/{id}',[
+		'uses'=> 'ProductsController@single',
+		'as'=>'single.product'
+		]);
+	Route::get('/products/category/{id}',[
+		'uses'=> 'ProductsController@getByCategory',
+		'as'=>'product.bycategory'
+		]);
+	
 	
