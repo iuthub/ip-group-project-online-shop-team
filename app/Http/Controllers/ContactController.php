@@ -14,11 +14,11 @@ class ContactController extends Controller {
     public function saveContact(Request $request) { 
 
       $this->validate($request, [
-          'name' => 'required',
-          'email' => 'required|email',
-          'subject' => 'required',
+          'name' => ['required','regex:/^[a-zA-Z]{5,}$/'],
+          'email' => ['required','regex:/^([1-zA-Z0-1@.\s]{1,255})$/'],
+          'subject' => ['required','regex:/^[a-zA-Z\s]{1,32}$/'],
           'phone_number' => 'required',
-          'message' => 'required'
+          'message' => ['required','regex:/^[a-zA-Z\s]{1,255}$/']
       ]);
 
       $contact = new Contact;

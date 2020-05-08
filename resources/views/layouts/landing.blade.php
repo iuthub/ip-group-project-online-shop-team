@@ -52,7 +52,7 @@
         <h2 class="mb-5 text-secondary" font-weight = "bold"> Best Features </h2>
         
         <div class="row">
-          <div class="col-md-4 mb-5" id="cards">
+          <div class="col-md-4 mb-5 " id="cards">
             <img src="https://lh3.googleusercontent.com/U6_ExG4DlD6Tp-3qkLdRfIDP4xspBBN3ZVPxbesH2HvP8zsEPEL5l0FwAG6TjH5AZNEV-ew7X_h6OKkoAk58lkL_yBGBQhoSRexdmysnDeItEXunqVMD4_WKI5oEVRWuutftKwdUqCppUZDkUyZnwjIusnCFYM_6eD1Yud_1lcs6bGKTfWmsdmi4v3x_Myhykb-Mst8ys-wCnxx84JBE2B0pXDSA5LP5RursqaZXk2eWXfr0TlZa6vrUJXJELf7bGhSEswmxw0GPzfMy-acCX9jHMPSMANPL4WL6U7KE2f9vqdt7hrecrmdWYsr1Gzzuq1tSeQJMJNHpMIShke7Sg0WYbfkdoqGFjswTSN0XjwPsVloKP0OOPqj67v0y_cuyMHmSRwIHGMtR1lfmVLDUBrjm34P-03DzNIYVS9vLwa1UMwqudwqtzAGhepdd0KKWQMVzWde_Wleh6JH_7itmMKmJPU0J_z8pIrgObPIm0rL72f1MdlnKR8bIZAq2BcZTlkKWIHKQXzA3d7zqF3Cl74K46iZU7vCjO-WtgWHozNYjBWYaWU-670N5yRo7pTc3nVQl-ZbT8Dpb7VtVI4SZ7ox5rLQ_XLTM_Ry0YAEEqUxqwTEMeByuavHY_YF31xzFH7uKDKHoOslcDy-0_KxE_UKvtveKTUtlmz-vvVdsdskaH-HBlA2FNnW4ZvqKIw=s608-no"
             alt="user-friendly" height="250 px">
             <h4 class="my-4 font-weight-bold">User-Feiendly</h4>
@@ -76,6 +76,7 @@
 
       </section>
     </div>
+
     </body>
 
    

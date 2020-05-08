@@ -39,6 +39,24 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(Auth::check() && !Auth::guard('admin')->check())
+                        <li class = "nav-item">
+                            <a href="{{ route('product.shoppingCart') }}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>Shopping Cart<span class="badge">{{  Session::has('cart') ?  Session::get('cart')->totalQty : '' }}</span>
+                            </a>
+                        </li>
+                        @endif
+                        @if (Auth::guard('admin')->check())
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.orders') }}">Orders</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('product.create') }}">Create Product</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}">Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboadr</a></li>
+                                
+                        @endif
+                        @if (Auth::guard('web')->check())
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.profile') }}">MyProfile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('search') }}">Search</a></li>
+                        @endif
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

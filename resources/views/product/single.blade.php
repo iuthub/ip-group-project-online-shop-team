@@ -20,7 +20,7 @@
 <div class="price">
 	<p>{{ $product->price }}</p>
 	<br>
-	<a href="{{ route('user.addToCart',['id'=>$product->id]) }}">Add to Card</a>
+	<a href="{{ route('product.addToCart',['id'=>$product->id]) }}">Add to Card</a>
 </div>
 
 
