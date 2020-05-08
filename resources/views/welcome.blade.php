@@ -111,22 +111,17 @@
                         </div>
                     </div>
                 </div>
-                
-            <div class="content">
-                <div class="title m-b-md">
-                   
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            
+            <div class="categories">
+                <h1>Categories</h1>
+                <hr>
+                <p><a href="{{ route('product.bycategory',['id'=>1]) }}">Iphone</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>2]) }}">Ipad</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>3]) }}">IMac</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>4]) }}">Macbook Pro</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>5]) }}">Macbook Air</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>6]) }}">IWatch</a></p>
+                <p><a href="{{ route('product.bycategory',['id'=>7]) }}">AirPods</a></p>
             </div>
         </div>
     </body>

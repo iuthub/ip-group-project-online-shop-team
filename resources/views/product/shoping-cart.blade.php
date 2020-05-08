@@ -15,8 +15,10 @@
 							
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="#">Reduce by 1</a></li>
-							<li><a href="#">Reduce All</a></li>
+							<li><a href="{{ route('product.incrementByOne',['id'=>$product['item']['id']]) }}">Increment by 1</a></li>
+							<li><a href="{{ route('product.reduceByOne',['id'=>$product['item']['id']]) }}">Reduce by 1</a></li>
+							<li><a href="{{ route('product.removeItem',['id'=>$product['item']['id']]) }}">Reduce All</a></li>
+
 						
 						</ul>
 					</div>
