@@ -1,11 +1,10 @@
-@extends('layouts.content')
+@extends('layouts.app')
 @section('content')
 
 <div class = "container">
   <br>
   <br>
-
-
+  
         <div class="card card-user">
           <div class="card-header bg-dark text-white">
             <h5 class="card-title text-center ">
@@ -20,7 +19,7 @@
             @endif
           
 
-            <form method="post" action="contact-us">
+            <form method="post" action="{{route('postContactus')}}">
               {{csrf_field()}}
     
                 <div class="form-row">

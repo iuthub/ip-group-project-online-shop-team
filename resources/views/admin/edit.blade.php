@@ -25,7 +25,7 @@
  </div>
  @csrf
    <input type="hidden" name="id" value="{{ $productId }}">
-  <button type="submit" class="btn btn-primary">Create</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 	</div>

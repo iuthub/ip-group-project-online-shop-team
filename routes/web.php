@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -80,6 +81,8 @@ Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.log
 		'uses'=> 'UserController@index',
 		'as'=>'user.index'
 		]);
+	Route::get('/contact-us', 'ContactController@getContact')->name('getContactus');
+	Route::any('/contact-us/post', 'ContactController@saveContact')->name('postContactus');
 		Route::any('search',[
 		'uses'=> 'ProductsController@search',
 		'as'=>'user.search'

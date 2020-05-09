@@ -7,18 +7,17 @@ use Mail;
 class ContactController extends Controller { 
 
     public function getContact() { 
-
-     return view('contact_us'); 
+         return view('contact_us'); 
    } 
 
     public function saveContact(Request $request) { 
 
       $this->validate($request, [
-          'name' => ['required','regex:/^[a-zA-Z]{5,}$/'],
-          'email' => ['required','regex:/^([1-zA-Z0-1@.\s]{1,255})$/'],
-          'subject' => ['required','regex:/^[a-zA-Z\s]{1,32}$/'],
+          'name' => 'required',
+          'email' => 'required|email',
+          'subject' => 'required',
           'phone_number' => 'required',
-          'message' => ['required','regex:/^[a-zA-Z\s]{1,255}$/']
+          'message' => 'required'
       ]);
 
       $contact = new Contact;

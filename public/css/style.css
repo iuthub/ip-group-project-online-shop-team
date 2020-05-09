@@ -51,3 +51,10 @@
 .hidden {
    visibility:hidden;
 }
+
+
+
+body{
+  background-color: rgb(182, 227, 241);
+  font-family: Arial, 'Times New Roman', serif, sans-serif;
+}
