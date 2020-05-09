@@ -140,4 +140,3 @@ Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.log
 		'as'=>'product.bycategory'
 		]);
 	
-	

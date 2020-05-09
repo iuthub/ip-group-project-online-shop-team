@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-8 col">
                             <div class="panel">
-  @if (Auth::guard('web')->check())
+  @if (Auth::guard('web')->check() && !Auth::guard('admin')->check())
     <p class="text-success">
         You are Loged In as a <strong>User</strong>
         
@@ -95,7 +95,7 @@
     </p>
     {{-- expr --}}
 @endif
-@if (Auth::guard('admin')->check())
+@if (Auth::guard('admin')->check() && !Auth::guard('web')->check() )
     <p class="text-success">
         You are Loged In as a <strong>Admin</strong>
         

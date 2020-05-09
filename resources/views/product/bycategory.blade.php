@@ -7,7 +7,7 @@
 @foreach ($products as $product)
  <p> {{ $product->name }}</p>
  <p> {{ $product->price }}</p>  
-<p><a href="#">View</a></p>
+<p><a href="{{ route('single.product', ['id'=>$product->id]) }}">View</a></p>
     
 @endforeach
     @else
