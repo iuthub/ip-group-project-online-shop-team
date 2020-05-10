@@ -24,6 +24,13 @@ class ProductsController extends Controller
      }
  
      public function createProduct(Request $request){
+      $this->validate($request, [
+         'name' => 'required',
+         'price' => 'required',
+         'image' => 'required',
+         'description' => 'required',
+         
+     ]);
    	 $products = new Product();
    	 $products->name = $request->input('name');
    	 $products->price= $request->input('price');
@@ -48,15 +55,29 @@ class ProductsController extends Controller
    
 	  public function edit($id){
         $product = Product::find($id);	
-		  return view('admin.edit',['product'=>$product, 'productId'=> $id]);
-
+        return view('admin.edit',['product'=>$product, 'productId'=> $id]);
+        
+        
 	   } 
 	   
 
+
       public function edited(Request $request){
+        $this->validate($request, [
+         'name' => 'required',
+         'price' => 'required',
+         'image' => 'required',
+         'description' => 'required',
+         
+     ]);
+     return redirect()->route('admin.index')->with('info','Edited ');
+
 		  $product = Product::find($request->input('id'));
 		  $product->name = $request->input('name');
-   	  $product->price= $request->input('price');
+        $product->price= $request->input('price');
+        
+        ;
+        
    	  if ($request->hasFile('image')){
    		    $file=$request->file('image');
    		    $extension = $file->getClientOriginalName();
@@ -70,7 +91,7 @@ class ProductsController extends Controller
    		}
           $product->description = $request->input('description');
    	 	 $product->save();
-   		 return redirect()->route('admin.index')->with('info','Added Sucssesfuly');
+   		 return redirect()->route('admin.index')->with('info','Added ');
    		}
    	
 
@@ -176,6 +197,12 @@ class ProductsController extends Controller
          }
         
          public function postCheckout(Request $request){
+          $this->validate($request, [
+           
+         'name' => 'required',
+         'address' => 'required',
+         'creditcardnumber' => 'required',
+      ]);
             $user = Auth::user();
             if(!Session::has('cart')){
                return view('product.shoping-cart');
