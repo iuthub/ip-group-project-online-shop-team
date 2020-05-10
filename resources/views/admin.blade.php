@@ -14,12 +14,12 @@
                         </div>
                     @endif
                             @if (Auth::guard('web')->check())
-    <p class="text-success">
+    <p class="text-success text-center">
         You are Loged In as a <strong>User</strong>
         
     </p>
     @else
-    <p class="text-danger">
+    <p class="text-danger text-center">
         You are Loged out as a <strong>User</strong>
         
     </p>
@@ -28,7 +28,7 @@
 
 @if (Auth::guard('admin')->check())
 
-    <p class="text-success">
+    <p class="text-success text-center">
         You are Loged In as a <strong>Admin</strong>
         <br>
 <div class="row">
@@ -48,7 +48,7 @@
     </p>
 
     @else
-    <p class="text-danger">
+    <p class="text-danger text-center">
         You are Loged out as a <strong>Admin</strong>
         
     </p>

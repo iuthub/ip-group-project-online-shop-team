@@ -49,7 +49,7 @@
         }
 
         .links > a {
-           
+            color: white;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
@@ -66,37 +66,99 @@
 
            
          }
+
+ .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0e2f44;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 30px;
+    }
+
+.sidenav a {
+  padding: 0px 2px 2px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #c0c0c0;
+  display: block;
+  
+}
+
+.sidenav a:hover {
+  color: #876d94;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 40px;
+  margin-left: 50px;
+}
+
+#clickbtn {
+  transition: margin-left .8s;
+  padding: 16px;
+}
+
     </style>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "150px";
+  document.getElementById("clickbtn").style.marginLeft = "30px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("clickbtn").style.marginLeft= "0";
+}
+</script>
 
     </head>
 
     <body>
 
         <nav class="navbar navbar-expand-lg bg-dark text-white ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon "></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown" id="navbar">
+            <div class="collapse navbar-collapse bg-dark" id="navbarNavDropdown" id="navbar">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
               <ul class="navbar-nav">
                 <li class="nav-item ">
-                    <p class="nav-link text-warning" ><i class="fa fa-shopping-cart text-primary fa-lg"></i> Online Shop</p> 
+                    <p class="nav-link text-warning mb-2 pt-3" ><i class="fa fa-shopping-cart text-primary fa-lg mb-3"></i> Online Shop</p> 
                 </li>
+
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="navbar">
-                    Categories
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>1]) }}">Iphone</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>2]) }}">Ipad</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>3]) }}">IMac</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>4]) }}">Macbook Pro</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>5]) }}">Macbook Air</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>6]) }}">IWatch</a>
-                    <a class="dropdown-item" href="{{ route('product.bycategory',['id'=>7]) }}">AirPods</a>
-                  </div>
+                  <div id="mySidenav" class="sidenav">
+                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                      <a href="{{ route('product.bycategory',['id'=>1]) }}">Iphone</a>
+                      <a href="{{ route('product.bycategory',['id'=>2]) }}">Ipad</a>
+                      <a href="{{ route('product.bycategory',['id'=>3]) }}">IMac</a>
+                      <a href="{{ route('product.bycategory',['id'=>4]) }}">Macbook Pro</a>
+                      <a href="{{ route('product.bycategory',['id'=>5]) }}">Macbook Air</a>
+                      <a href="{{ route('product.bycategory',['id'=>6]) }}">IWatch</a>
+                      <a href="{{ route('product.bycategory',['id'=>7]) }}">AirPods</a>
+                    </div>
+
+            <div id="clickbtn">
+              
+        <span style="cursor:pointer" onclick="openNav()">&#9776; Categories</span>
+
+            </div>
+
                   
                 </li>
+
                 <li class="nav-item ">
                     @if (Route::has('login'))
                 <div class="top-right links">
@@ -114,7 +176,7 @@
                      @endif
                 </li>
                   <li class="nav-item ">
-                      <a href="{{route('getContactus')}}" class="nav-link " >Contact us</a>
+                      <a href="{{route('getContactus')}}" class="nav-link pt-3 text-light" >Contact us</a>
                   </li>
               </ul>
             </div>
@@ -161,6 +223,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
 
 <div class="container-fluid p-0 " >
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

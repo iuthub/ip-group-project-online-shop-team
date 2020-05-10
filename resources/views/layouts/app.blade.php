@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark">
             <div class="container" >
-                <a class="navbar-brand text-light" href="{{ url('/') }}" id="navbar">
+                <a class="navbar-brand text-light" href="{{ url('/') }}" >
                     Main Page
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -56,31 +56,31 @@
                         <li class = "nav-item pt-2">
                             <a href="{{ route('product.shoppingCart') }}" id="navbar">
                                 <i class="fa fa-shopping-cart text-light" aria-hidden="true">
-                                    </i> Shopping Cart<span class="badge">{{  Session::has('cart') ?  Session::get('cart')->totalQty : '' }}</span>
+                                    </i> <span class="text-light">Shopping Cart<span class="badge">{{  Session::has('cart') ?  Session::get('cart')->totalQty : '' }}</span></span>
                             </a>
                         </li>
                         @endif
                         @if (Auth::guard('admin')->check())
-                            <li class="nav-item"><a class="nav-link text-light"id="navbar" href="{{ route('admin.orders') }}">Orders</a></li>
-                            <li class="nav-item"><a class="nav-link text-light" id="navbar" href="{{ route('product.create') }}">Create Product</a></li>
-                            <li class="nav-item"><a class="nav-link text-light" id="navbar" href="{{ route('admin.index') }}">Products</a></li>
-                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('admin.dashboard') }}" id="navbar">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('admin.orders') }}">Orders</a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="{{ route('product.create') }}">Create Product</a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="{{ route('admin.index') }}">Products</a></li>
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('admin.dashboard') }}" >Dashboard</a></li>
                                 
                         @endif
                         @if (Auth::guard('web')->check())
-                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.profile') }}" id="navbar">MyProfile</a></li>
-                            <li class="nav-item"><a class="nav-link text-light" id="navbar" href="{{ route('search') }}">Search</a></li>
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.profile') }}" >MyProfile</a></li>
+                            <li class="nav-item"><a class="nav-link text-light"  href="{{ route('search') }}">Search</a></li>
                         @endif
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="navbar" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-light"  href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link text-light" id="navbar" href="{{ route('admin.login') }}">{{ __('Admin') }}</a> 
+                                <a class="nav-link text-light"  href="{{ route('admin.login') }}">{{ __('Admin') }}</a> 
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-light" id="navbar" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-light"  href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

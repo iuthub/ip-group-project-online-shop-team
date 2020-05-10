@@ -3,12 +3,13 @@
 @section('content')
 <div class="container">
 	<strong><h1  class=" text-center text-secondary">Checkout</h1></strong>
+	
 <div class="row justify-content-center">
 	<div class="col-sm-6 bg-secondary text-light">
 		
 		<h4 class="text-center pt-3"><span class="text-light"> Total:</span> <strong>{{ $total }} $ </strong></h4>
 		
-		<form class="form-horizontal" action="{{ route('checkout') }}" method = "post" id="checkout-form" >
+		<form class="form-horizontal" action="{{ route('postcheckout') }}" method = "post" id="checkout-form" >
 			<div class="form-group ">
 			  <div class="col-sm-12">
 				<input type="text" class="form-control" id="name"  name ="name" placeholder="Enter your name">

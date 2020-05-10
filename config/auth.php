@@ -113,7 +113,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins' => [,
+        'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 30,
@@ -134,5 +134,5 @@ return [
 
      'password_timeout' => 10800,
 
-
+     ]
 ];

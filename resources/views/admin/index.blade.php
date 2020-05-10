@@ -3,7 +3,7 @@
 @if(Session::has('info'))
   <h1 class="text-success text-center pt-3 mb-3">
 		{{   Session::get('info') }}
-    successfully!
+    
 	</h1>
 
 @endif

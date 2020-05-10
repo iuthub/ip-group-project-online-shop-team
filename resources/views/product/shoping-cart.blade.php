@@ -8,11 +8,6 @@
 		<ul class="list-group">
 			@foreach ($products as $product)
 				<li class="list-group-item"> 
-					{{-- <span class="badge">{{ $product['qty']}}</span>
-					<strong>{{ $product['item']['name'] }}</strong>
-					<span class="label">{{ $product['price'] }} $</span>
-	 --}}
-			
 					<table class="table table-sm  table-bordered text-center">
 						<thead class="thead-dark">
 						  <tr>
